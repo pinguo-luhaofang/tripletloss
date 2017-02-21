@@ -49,7 +49,7 @@ class TripletSelectLayer(caffe.Layer):
             a_n = archor_feature - negative_feature
             an = np.dot(a_n,a_n)
             ans[i+self.triplet*2] = an
-        ans = sorted(ans.items(), key = lambda d: d[1], reverse = True)  
+        ans = sorted(ans.items(), key = lambda d: d[1], reverse = False) # We want the lowest distance to be first
 
         for i in range(self.triplet): 
             top_archor.append(bottom[0].data[i])
